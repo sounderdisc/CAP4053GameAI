@@ -19,7 +19,7 @@ public class FlightControlV2 : MonoBehaviour
     }
 
     // constructor
-    public FlightControlV2(float roll, float pitch, float yaw, float surge, float sway, float heave, float thrust, float rotation)
+    public void FakeConstructor(float roll, float pitch, float yaw, float surge, float sway, float heave, float thrust, float rotation)
     {
         rollMod = roll;
         pitchMod = pitch;
@@ -33,9 +33,12 @@ public class FlightControlV2 : MonoBehaviour
         baseRotation = rotation;
     }
 
-    public void ReceiveInput(bool toggleFA, float surge, float sway, float heave, float roll, float pitch, float yaw) //here's where you're gonna update thrust with the stick's position, or the AI pilot's commands
+    //here's where you're gonna update thrust with the stick's position, or the AI pilot's commands
+    public void ReceiveInput(bool toggleFA, float surge, float sway, float heave, float roll, float pitch, float yaw)
     {
-    	// flight stabilization assist toggle
+    	// I know leaving commented code in isnt good practice, but this is nice for debugging, so I'll leave it
+        // print("in ReceiveInput(surge " + surge + ", sway " + sway + ", heave " + heave + ", roll " + roll + ", pitch " + pitch + ", yaw " + yaw + ")");
+        // flight stabilization assist toggle
         if (toggleFA)
         {
             if (!isActiveFA)
@@ -66,6 +69,7 @@ public class FlightControlV2 : MonoBehaviour
     void FixedUpdate()
     {
         // TRANSLATIONAL AXES
+        print("in FixedUpdate " + (surgeMod * surgeInput * baseThrust));
         rb.AddRelativeForce(Vector3.forward * surgeMod * surgeInput * baseThrust);
         rb.AddRelativeForce(Vector3.right * swayMod * swayInput * baseThrust);
         rb.AddRelativeForce(Vector3.up * heaveMod * heaveInput * baseThrust);

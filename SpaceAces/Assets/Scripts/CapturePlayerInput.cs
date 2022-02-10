@@ -14,8 +14,9 @@ public class CapturePlayerInput : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // Fetch the FlightControllerV2 from the GameObject with this script attached
-        flightController = new FlightControlV2(rollMod, pitchMod, yawMod, surgeMod, swayMod, heaveMod, baseThrust, baseRotation);
+        // PSA using a normal constructor for a monobehavior is a no-no. use add component instead
+        flightController = gameObject.AddComponent<FlightControlV2>() as FlightControlV2; // CORRECT
+        flightController.FakeConstructor(rollMod, pitchMod, yawMod, surgeMod, swayMod, heaveMod, baseThrust, baseRotation);
     }
 
     // Update is called once per frame
@@ -33,7 +34,11 @@ public class CapturePlayerInput : MonoBehaviour
 
         // flight stabilization assist toggle
         bool toggleFA = false;
-        if (Input.GetKeyDown("left shift"))
+        // if (Input.GetKeyDown("left shift"))
+        // {
+        //     toggleFA = true;
+        // }
+        if (Input.GetAxis("toggleFA") > 0)
         {
             toggleFA = true;
         }

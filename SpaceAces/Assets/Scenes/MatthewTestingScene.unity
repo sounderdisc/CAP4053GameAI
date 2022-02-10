@@ -704,7 +704,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flightController: {fileID: 0}
-  baseThrust: 1
+  baseThrust: 2
   baseRotation: 1
   rollMod: 1
   pitchMod: 1
