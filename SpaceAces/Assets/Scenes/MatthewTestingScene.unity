@@ -668,13 +668,20 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1885997552}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d665706a36929ca489d73cee14438dfc, type: 3}
+  m_Script: {fileID: 11500000, guid: aa94db3f837e6a44eb7fcbff938fffa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Thrust: 20
-  m_Torque: 2
+  flightController: {fileID: 0}
+  baseThrust: 1
+  baseRotation: 1
+  rollMod: 1
+  pitchMod: 1
+  yawMod: 1
+  surgeMod: 1
+  swayMod: 1
+  heaveMod: 1
 --- !u!54 &1885997555
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -691,27 +698,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1885997556
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1885997552}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37051e8758e3ff343a5efe7f37cadff5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  flightController: {fileID: 0}
-  baseThrust: 2
-  baseRotation: 1
-  rollMod: 1
-  pitchMod: 1
-  yawMod: 1
-  surgeMod: 1
-  swayMod: 1
-  heaveMod: 1
 --- !u!1 &2004508899
 GameObject:
   m_ObjectHideFlags: 0

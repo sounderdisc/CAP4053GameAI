@@ -7,8 +7,8 @@ public class FlightControlV2 : MonoBehaviour
     public float baseThrust;
     public float baseRotation;
     public float rollMod, pitchMod, yawMod, surgeMod, swayMod, heaveMod;
-    public float surgeInput, heaveInput, swayInput;
-    public float rollInput, pitchInput, yawInput;
+    private float surgeInput, swayInput, heaveInput;
+    private float rollInput, pitchInput, yawInput;
     public Rigidbody rb;
     public bool isActiveFA; // like auto break in nav meshes mentioned in class
 
