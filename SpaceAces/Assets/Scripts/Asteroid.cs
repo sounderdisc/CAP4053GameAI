@@ -7,9 +7,9 @@ public class Asteroid : MonoBehaviour
     Transform trans;
     Vector3 rotation;
 
-    [SerializeField]float scaling_min = 10.0f;
-    [SerializeField]float scaling_max = 20.0f;
-    [SerializeField]float rotationSpeed = 10f;
+    [SerializeField]float scaling_min = 10.3f;
+    [SerializeField]float scaling_max = 20.5f;
+    [SerializeField]float rotationSpeed = 20f;
 
     // Initialize variables before game starts.
     void Awake()
@@ -28,7 +28,7 @@ public class Asteroid : MonoBehaviour
         scaling.y = Random.Range(scaling_min, scaling_max);
         scaling.z = Random.Range(scaling_min, scaling_max);
 
-        // Set the 
+        // Set the asteroid scaling value after randomly generating it. 
         trans.localScale = scaling;
 
         // Randomly generate rotation
