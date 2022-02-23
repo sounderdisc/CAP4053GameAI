@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class FlightControl : MonoBehaviour
 {
-    public float baseThrust;
-    public float baseRotation;
-    public float rollMod, pitchMod, yawMod, surgeMod, swayMod, heaveMod;
+    [SerializeField] float baseThrust;
+    [SerializeField] float baseRotation;
+    [SerializeField] float rollMod, pitchMod, yawMod, surgeMod, swayMod, heaveMod;
     private float surgeInput, swayInput, heaveInput;
     private float rollInput, pitchInput, yawInput;
-    public Rigidbody rb;
-    public bool isActiveFA; // like auto break in nav meshes mentioned in class 
+    [SerializeField] Rigidbody rb;
+    private bool isActiveFA; // like auto break in nav meshes mentioned in class 
 
     void Start()
     {

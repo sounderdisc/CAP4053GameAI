@@ -5,13 +5,13 @@ using UnityEngine.InputSystem;
 
 public class CapturePlayerInput : MonoBehaviour
 {
-    public FlightControl flightController;
-    public PlayerControls controls;
+    [SerializeField] FlightControl flightController;
+    [SerializeField] PlayerControls controls;
 
     // These are all instance variables so we can set them in editor. Passed to FlightControl
-    public float baseThrust;
-    public float baseRotation;
-    public float rollMod, pitchMod, yawMod, surgeMod, swayMod, heaveMod;
+    [SerializeField] float baseThrust;
+    [SerializeField] float baseRotation;
+    [SerializeField] float rollMod, pitchMod, yawMod, surgeMod, swayMod, heaveMod;
     private float surgeInput, swayInput, heaveInput;
     private float rollInput, pitchInput, yawInput;
     private bool toggleFA;
