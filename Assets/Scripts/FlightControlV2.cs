@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FlightControlV2 : MonoBehaviour
 {
+    
     public float baseThrust;
     public float baseRotation;
     public float rollMod, pitchMod, yawMod, surgeMod, swayMod, heaveMod;
@@ -12,6 +13,7 @@ public class FlightControlV2 : MonoBehaviour
     public Rigidbody rb;
     public bool isActiveFA; // like auto break in nav meshes mentioned in class
     public MainWeapon weapon;
+    public Laser laser;
     
     //public bool weaponInput;
 
@@ -20,6 +22,8 @@ public class FlightControlV2 : MonoBehaviour
         // Fetch the Rigidbody from the GameObject with this script attached
         rb = GetComponent<Rigidbody>(); // https://docs.unity3d.com/ScriptReference/Rigidbody.AddForce.html
         weapon = GetComponent<MainWeapon>();
+        laser = GetComponent<Laser>();
+        
     }
 
     // constructor
@@ -35,8 +39,6 @@ public class FlightControlV2 : MonoBehaviour
 
         baseThrust = thrust;
         baseRotation = rotation;
-
-        
     }
 
     //here's where you're gonna update thrust with the stick's position, or the AI pilot's commands
@@ -71,8 +73,8 @@ public class FlightControlV2 : MonoBehaviour
 
         if (weaponInput)
         {
-            weapon.Shoot();
-            
+            //weapon.Shoot();
+            laser.Shoot();
             //weaponInput = false;
         }
     }

@@ -437,7 +437,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""7c0a808c-194b-4a2d-9351-2f9bdf90badc"",
                     ""path"": ""<XInputController>/leftStickPress"",
-                    ""interactions"": """",
+                    ""interactions"": ""Press(behavior=2)"",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""ToggleFA"",
