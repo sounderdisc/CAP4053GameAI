@@ -11,6 +11,8 @@ public class CapturePlayerInput : MonoBehaviour
     // These are all instance variables so we can set them in editor. Passed to FlightControl
     [SerializeField] float baseThrust;
     [SerializeField] float baseRotation;
+    [SerializeField] float flightAssistStrength;
+    [SerializeField] float maxSpeed, idealSpeed;
     [SerializeField] float rollMod, pitchMod, yawMod, surgeMod, swayMod, heaveMod;
     private float surgeInput, swayInput, heaveInput;
     private float rollInput, pitchInput, yawInput;
@@ -21,7 +23,7 @@ public class CapturePlayerInput : MonoBehaviour
     {
         // PSA using a normal constructor for a monobehavior is a no-no. use add component instead
         flightController = gameObject.AddComponent<FlightControl>() as FlightControl;
-        flightController.FakeConstructor(rollMod, pitchMod, yawMod, surgeMod, swayMod, heaveMod, baseThrust, baseRotation);
+        flightController.FakeConstructor(rollMod, pitchMod, yawMod, surgeMod, swayMod, heaveMod, baseThrust, baseRotation, flightAssistStrength, maxSpeed, idealSpeed);
     }
 
     void Awake()

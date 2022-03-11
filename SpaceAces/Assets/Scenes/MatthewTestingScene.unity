@@ -785,8 +785,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flightController: {fileID: 0}
-  baseThrust: 1
+  baseThrust: 2
   baseRotation: 1
+  flightAssistStrength: 5
+  maxSpeed: 5
+  idealSpeed: 3
   rollMod: 1
   pitchMod: 1
   yawMod: 1
