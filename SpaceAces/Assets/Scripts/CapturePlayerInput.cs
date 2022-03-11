@@ -17,6 +17,7 @@ public class CapturePlayerInput : MonoBehaviour
     private float surgeInput, swayInput, heaveInput;
     private float rollInput, pitchInput, yawInput;
     private bool toggleFA;
+    private Laser laser;
     
     // Start is called before the first frame update
     void Start()
@@ -24,6 +25,7 @@ public class CapturePlayerInput : MonoBehaviour
         // PSA using a normal constructor for a monobehavior is a no-no. use add component instead
         flightController = gameObject.AddComponent<FlightControl>() as FlightControl;
         flightController.FakeConstructor(rollMod, pitchMod, yawMod, surgeMod, swayMod, heaveMod, baseThrust, baseRotation, flightAssistStrength, maxSpeed, idealSpeed);
+        laser = GetComponent<Laser>();
     }
 
     void Awake()
@@ -50,6 +52,9 @@ public class CapturePlayerInput : MonoBehaviour
         controls.ShipMovement.RollAxis.canceled += ctx => rollInput = 0f;
         controls.ShipMovement.PitchAxis.canceled += ctx => pitchInput = 0f;
         controls.ShipMovement.YawAxis.canceled += ctx => yawInput = 0f;
+
+        // laser weapon
+        controls.Weapons.Fire1.started += ctx => laser.Shoot();
     }
 
     void OnEnable()
