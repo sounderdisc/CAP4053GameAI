@@ -28,7 +28,7 @@ public class Laser : MonoBehaviour
 
     public void Shoot()
     {
-        Debug.Log("Shoot called in laser");
+        // Debug.Log("Shoot called in laser");
         if (LastShootTime + ShootDelay < Time.time)
         {
             Vector3 direction = GetDirection();

@@ -123,6 +123,63 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &99986053
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 144289793877741443, guid: 3a71bf30dcf8f4fb4959d4d9099489c4, type: 3}
+      propertyPath: m_Name
+      value: Asteroid
+      objectReference: {fileID: 0}
+    - target: {fileID: 144289793877741446, guid: 3a71bf30dcf8f4fb4959d4d9099489c4, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 144289793877741446, guid: 3a71bf30dcf8f4fb4959d4d9099489c4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 25.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 144289793877741446, guid: 3a71bf30dcf8f4fb4959d4d9099489c4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 144289793877741446, guid: 3a71bf30dcf8f4fb4959d4d9099489c4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 60.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 144289793877741446, guid: 3a71bf30dcf8f4fb4959d4d9099489c4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 144289793877741446, guid: 3a71bf30dcf8f4fb4959d4d9099489c4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 144289793877741446, guid: 3a71bf30dcf8f4fb4959d4d9099489c4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 144289793877741446, guid: 3a71bf30dcf8f4fb4959d4d9099489c4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 144289793877741446, guid: 3a71bf30dcf8f4fb4959d4d9099489c4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 144289793877741446, guid: 3a71bf30dcf8f4fb4959d4d9099489c4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 144289793877741446, guid: 3a71bf30dcf8f4fb4959d4d9099489c4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3a71bf30dcf8f4fb4959d4d9099489c4, type: 3}
 --- !u!1001 &501323170
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -496,6 +553,53 @@ Skybox:
   m_GameObject: {fileID: 963194225}
   m_Enabled: 1
   m_CustomSkybox: {fileID: 2100000, guid: bcd3417f7c4e30d40bdf0dc5002ae1fd, type: 2}
+--- !u!1 &1121383098
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1121383100}
+  - component: {fileID: 1121383099}
+  m_Layer: 0
+  m_Name: AsteroidManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1121383099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1121383098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23059260e583ac146a91166d57827998, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numAsteroids: 10
+  spaceInBetweenMin: 100
+  spaceInBetweenMax: 200
+  asteroid: {fileID: 2004947793}
+--- !u!4 &1121383100
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1121383098}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -161.89642, y: -362.34006, z: 370.4769}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1175151773
 GameObject:
   m_ObjectHideFlags: 0
@@ -589,7 +693,7 @@ Transform:
   m_LocalScale: {x: 20, y: 20, z: 20}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1441577713
 PrefabInstance:
@@ -604,7 +708,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4981508461130746294, guid: e8b14dde53114d242b5dcad7698a44a7, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4981508461130746294, guid: e8b14dde53114d242b5dcad7698a44a7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -707,15 +811,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flightController: {fileID: 0}
-  baseThrust: 10
+  baseThrust: 3
   baseRotation: 5
+  flightAssistStrength: 1.5
+  maxSpeed: 5
+  idealSpeed: 3
   rollMod: 1
   pitchMod: 1
   yawMod: 1
   surgeMod: 1
   swayMod: 1
   heaveMod: 1
-  weapon: {fileID: 0}
 --- !u!54 &1885997555
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -963,7 +1069,7 @@ Transform:
   m_LocalScale: {x: 20, y: 20, z: 20}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2004508904
 MonoBehaviour:
@@ -978,3 +1084,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 144
+--- !u!114 &2004947793 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 144289793877741442, guid: 3a71bf30dcf8f4fb4959d4d9099489c4, type: 3}
+  m_PrefabInstance: {fileID: 99986053}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db5ba72db8afd44d1820890e222cf96c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
