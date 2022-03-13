@@ -81,4 +81,9 @@ public class Laser : MonoBehaviour
         //Instantiate(ImpactParticleSystem, Hit.point, Quaternion.LookRotation(Hit.normal));
         Destroy(Trail.gameObject, Trail.time);
     }
+
+    public Vector3 GetMuzzleDirection()
+    {
+        return LaserSpawnPoint.forward;
+    }
 }

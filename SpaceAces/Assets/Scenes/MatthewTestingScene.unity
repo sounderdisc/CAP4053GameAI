@@ -784,10 +784,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa94db3f837e6a44eb7fcbff938fffa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flightController: {fileID: 0}
-  baseThrust: 2
-  baseRotation: 1
-  flightAssistStrength: 5
+  baseThrust: 3
+  baseRotation: 5
+  flightAssistStrength: 1.5
   maxSpeed: 5
   idealSpeed: 3
   rollMod: 1

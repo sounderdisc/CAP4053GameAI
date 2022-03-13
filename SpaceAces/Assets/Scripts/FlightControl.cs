@@ -133,12 +133,12 @@ public class FlightControl : MonoBehaviour
                 rb.AddRelativeForce(Vector3.forward * surgeMod * throttleDirection * baseThrust * idealSpeedBonus);
             }
 
-            print("FA ON: " + rb.velocity + " idealSpeedBonus: " + idealSpeedBonus);
+            // Debug.Log("FA ON: " + rb.velocity + " idealSpeedBonus: " + idealSpeedBonus);
         }
         else
         {
             rb.AddRelativeForce(Vector3.forward * surgeMod * surgeInput * baseThrust * idealSpeedBonus);
-            print("FA OFF: " + rb.velocity + " idealSpeedBonus: " + idealSpeedBonus);
+            // Debug.Log("FA OFF: " + rb.velocity + " idealSpeedBonus: " + idealSpeedBonus);
         }
 
         // IDEAL SPEED MANUVERABLITY BONUS
@@ -152,5 +152,7 @@ public class FlightControl : MonoBehaviour
             float rubberBandStrength = (rb.velocity.magnitude - maxSpeed) / 2;
             rb.AddForce(-rb.velocity * rubberBandStrength);
         }
+
+        // Debug.Log(rb.angularVelocity);
     }
 }
