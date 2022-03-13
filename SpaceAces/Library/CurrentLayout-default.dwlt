@@ -48,7 +48,7 @@ MonoBehaviour:
   m_MinSize: {x: 678, y: 492}
   m_MaxSize: {x: 14001, y: 14042}
   vertical: 0
-  controlID: 39
+  controlID: 116
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -150,7 +150,7 @@ MonoBehaviour:
     y: 0
     width: 1920
     height: 997
-  m_MinSize: {x: 875, y: 542}
+  m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
   m_UseTopView: 1
   m_TopViewHeight: 30
@@ -226,7 +226,7 @@ MonoBehaviour:
   m_MinSize: {x: 403, y: 492}
   m_MaxSize: {x: 10001, y: 14042}
   vertical: 1
-  controlID: 40
+  controlID: 117
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -251,7 +251,7 @@ MonoBehaviour:
   m_MinSize: {x: 403, y: 221}
   m_MaxSize: {x: 8003, y: 4021}
   vertical: 0
-  controlID: 41
+  controlID: 118
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -813,22 +813,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts
+    - Assets
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scripts
+  - Assets
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\Sound\Documents\CAP4053GameAI\SpaceAces
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 35}
-    m_SelectedIDs: 9a470000
-    m_LastClickedID: 18330
-    m_ExpandedIDs: 0000000026470000284700002a4700002c4700002e4700003047000000ca9a3b
+    m_SelectedIDs: 2e470000
+    m_LastClickedID: 18222
+    m_ExpandedIDs: 000000002e470000304700003247000034470000364700003847000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -856,7 +856,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000026470000284700002a4700002c4700002e47000030470000
+    m_ExpandedIDs: 000000002e4700003047000032470000344700003647000038470000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -883,7 +883,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c62300000000000088580000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -977,9 +977,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: acf3ffff
-      m_LastClickedID: -3156
-      m_ExpandedIDs: 26f7ffff5afbffff
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: d45affff6a74ffff6efbffff7e5b0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1039,9 +1039,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 72.10924, y: -321.94376, z: 447.99472}
+    m_Target: {x: -327.32236, y: -409.6252, z: -241.59361}
     speed: 2
-    m_Value: {x: 72.10924, y: -321.94376, z: 447.99472}
+    m_Value: {x: -327.32236, y: -409.6252, z: -241.59361}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1088,13 +1088,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.3135721, y: 0.06828828, z: -0.022617647, w: 0.9468379}
+    m_Target: {x: 0.16918395, y: -0.8283358, z: 0.34079063, w: 0.41121712}
     speed: 2
-    m_Value: {x: 0.31357142, y: 0.06828813, z: -0.022617599, w: 0.9468359}
+    m_Value: {x: 0.16918385, y: -0.82833534, z: 0.34079042, w: 0.41121688}
   m_Size:
-    m_Target: 296.55768
+    m_Target: 293.56714
     speed: 2
-    m_Value: 296.55768
+    m_Value: 293.56714
   m_Ortho:
     m_Target: 0
     speed: 2

@@ -23,7 +23,7 @@ public class Laser : MonoBehaviour
     {
         LaserSound = GetComponent<AudioSource>();
         if (LaserSound == null)
-            Debug.LogError("ERORR");
+            Debug.LogError("In Laser Script. unable to GetComponent<AudioSource>()");
     }
 
     public void Shoot()
@@ -48,8 +48,9 @@ public class Laser : MonoBehaviour
             }
             else
             {
-                Vector3 miss = LaserSpawnPoint.position;
-                miss[2] = 100f;
+                // spawnedTrans.position =   playerTrans.position + ( playerTrans.forward * someDistanceFloat );
+                Vector3 miss = LaserSpawnPoint.position + (LaserSpawnPoint.forward * 100); // https://answers.unity.com/questions/897678/vector-relative-to-object-coordinates.html
+                // miss[2] = 100f;
                 TrailRenderer trail = Instantiate(LaserTrail, LaserSpawnPoint.position, Quaternion.identity);
                 StartCoroutine(SpawnTrail(trail, miss));
                 LaserSound.Play();

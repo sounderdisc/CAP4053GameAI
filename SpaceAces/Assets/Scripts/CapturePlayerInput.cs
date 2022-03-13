@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class CapturePlayerInput : MonoBehaviour
 {
-    [SerializeField] FlightControl flightController;
+    private FlightControl flightController;
     [SerializeField] PlayerControls controls;
 
     // These are all instance variables so we can set them in editor. Passed to FlightControl

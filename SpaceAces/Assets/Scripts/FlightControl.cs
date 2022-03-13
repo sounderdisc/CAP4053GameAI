@@ -16,7 +16,7 @@ public class FlightControl : MonoBehaviour
     private float surgeInput, swayInput, heaveInput;
     private float rollInput, pitchInput, yawInput;
     private Rigidbody rb;
-    private bool isActiveFA; // like auto break in nav meshes mentioned in class 
+    [SerializeField] private bool isActiveFA = false; // like auto break in nav meshes mentioned in class 
 
     void Start()
     {
@@ -43,6 +43,7 @@ public class FlightControl : MonoBehaviour
         flightAssistStrength = assist;
         maxSpeed = max;
         idealSpeed = ideal;
+
     }
 
     //here's where you're gonna update thrust with the stick's position, or the AI pilot's commands
