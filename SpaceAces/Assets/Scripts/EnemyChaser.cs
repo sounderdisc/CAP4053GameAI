@@ -9,7 +9,9 @@ public class EnemyChaser : MonoBehaviour
     [SerializeField] private Transform playerShipTransform;
     [SerializeField] private Transform selfTransform;
     [SerializeField] private Vector3 selfToPlayer;
+    [SerializeField] private Vector3 targetManeuver;
     [SerializeField] private bool wantToShoot;
+    [SerializeField] private float maneuverAgressiveness;
     private Rigidbody rb;
     private FlightControl flightController;
 
@@ -31,28 +33,27 @@ public class EnemyChaser : MonoBehaviour
         flightController = gameObject.AddComponent<FlightControl>() as FlightControl;
         flightController.FakeConstructor(rollMod, pitchMod, yawMod, surgeMod, swayMod, heaveMod, baseThrust, baseRotation, flightAssistStrength, maxSpeed, idealSpeed);
         laser = GetComponent<Laser>();
-        rb = GetComponent<Rigidbody>(); // Unity is being a bitch and not acually fucking getting the damn object
-        flightController.ReceiveInput(true, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f);
+        rb = GetComponent<Rigidbody>();
         wantToShoot = false;
     }
 
     void DecideControllerState()
     {
-        selfToPlayer = Vector3.Normalize(playerShipTransform.position - selfTransform.position);
+        selfToPlayer = Vector3.Normalize((playerShipTransform.position - selfTransform.position));
+        targetManeuver = (selfTransform.forward - selfToPlayer) * maneuverAgressiveness;
+        float manageableSpeed = Vector3.Angle(selfToPlayer, selfTransform.forward) / 10;
+        // Debug.Log(targetManeuver);
 
-        // Debug.Log("laser null? " + (laser == null));
-        // Debug.Log("rb null? " + (rb == null));
         // set toggleFA, surgeInput, swayInput, heaveInput, rollInput, pitchInput, and yawInput
-        if (rb.angularVelocity.magnitude > 0.2f)
+        if (rb.angularVelocity.magnitude > manageableSpeed)
         {
-            Debug.Log("in if");
             toggleFA = true;
             surgeInput = 0.0f;
             swayInput  = 0.0f;
             heaveInput = 0.0f;
             rollInput = 0.0f; 
             pitchInput = 0.0f; 
-            yawInput = 0.0f; 
+            yawInput = 0.0f;
         }
         else
         {
@@ -60,21 +61,31 @@ public class EnemyChaser : MonoBehaviour
             surgeInput = 0.0f;
             swayInput  = 0.0f;
             heaveInput = 0.0f;
-            rollInput = 0.0f;
-            pitchInput = 0.0f; // selfToPlayer[1];
-            yawInput = (selfToPlayer[0] > 0) ? 1.0f : -1.0f; // selfToPlayer[0];
-
-            Debug.Log("in else" + yawInput);
+            rollInput = 0.0f; 
+            pitchInput = -targetManeuver[1]; 
+            yawInput = targetManeuver[0];
         }
+
+        // manage throttle
+        if (flightController.getDesiredSpeed() < idealSpeed)
+        {
+            surgeInput = 1.0f;
+        }
+        else
+        {
+            surgeInput = -1.0f;
+        }
+
 
         wantToShoot = (Vector3.Angle(selfToPlayer, laser.GetMuzzleDirection()) < 5) ? true : false;
         if (wantToShoot)
         {
-            laser.Shoot();
+            // Debug.Log("selfTo Player: " + selfToPlayer + " | muzzle: " + laser.GetMuzzleDirection() + " | angle: " + Vector3.Angle(selfToPlayer, laser.GetMuzzleDirection()));
+            // laser.Shoot();
+            wantToShoot = true; // useless, except i think the compiler hates empty if's and i want to keep this if empty for now.
         }
     }
     
-    // Update is called once per frame
     void FixedUpdate()
     {
         DecideControllerState();

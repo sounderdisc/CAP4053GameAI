@@ -155,4 +155,9 @@ public class FlightControl : MonoBehaviour
 
         // Debug.Log(rb.angularVelocity);
     }
+
+    public float getDesiredSpeed()
+    {
+        return desiredSpeed;
+    }
 }
