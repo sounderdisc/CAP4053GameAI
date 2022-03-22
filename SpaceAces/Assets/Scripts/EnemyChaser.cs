@@ -81,8 +81,8 @@ public class EnemyChaser : MonoBehaviour
         if (wantToShoot)
         {
             // Debug.Log("selfTo Player: " + selfToPlayer + " | muzzle: " + laser.GetMuzzleDirection() + " | angle: " + Vector3.Angle(selfToPlayer, laser.GetMuzzleDirection()));
-            // laser.Shoot();
-            wantToShoot = true; // useless, except i think the compiler hates empty if's and i want to keep this if empty for now.
+            laser.Shoot();
+            //wantToShoot = true; // useless, except i think the compiler hates empty if's and i want to keep this if empty for now.
         }
     }
     
