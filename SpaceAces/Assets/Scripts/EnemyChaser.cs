@@ -8,9 +8,11 @@ public class EnemyChaser : MonoBehaviour
     // location of the player's ship. for now, set in editor
     [SerializeField] private Transform playerShipTransform;
     [SerializeField] private Transform selfTransform;
-    [SerializeField] private Vector3 selfToPlayer;
+    [SerializeField] private Vector3 steeringVector;
     [SerializeField] private Vector3 targetManeuver;
     [SerializeField] private bool wantToShoot;
+    [SerializeField] private float angleToShoot;
+    [SerializeField] private float handsOffAngle;
     [SerializeField] private float maneuverAgressiveness;
     private Rigidbody rb;
     private FlightControl flightController;
@@ -21,9 +23,9 @@ public class EnemyChaser : MonoBehaviour
     [SerializeField] float flightAssistStrength;
     [SerializeField] float maxSpeed, idealSpeed;
     [SerializeField] float rollMod, pitchMod, yawMod, surgeMod, swayMod, heaveMod;
-    private float surgeInput, swayInput, heaveInput;
-    private float rollInput, pitchInput, yawInput;
-    private bool toggleFA;
+    [SerializeField] private float surgeInput, swayInput, heaveInput;
+    [SerializeField] private float rollInput, pitchInput, yawInput;
+    [SerializeField] private bool toggleFA;
     private Laser laser;
     
     // Start is called before the first frame update
@@ -39,13 +41,10 @@ public class EnemyChaser : MonoBehaviour
 
     void DecideControllerState()
     {
-        selfToPlayer = Vector3.Normalize((playerShipTransform.position - selfTransform.position));
-        targetManeuver = (selfTransform.forward - selfToPlayer) * maneuverAgressiveness;
-        float manageableSpeed = Vector3.Angle(selfToPlayer, selfTransform.forward) / 10;
-        // Debug.Log(targetManeuver);
+        steeringVector = Vector3.Normalize((playerShipTransform.position - selfTransform.position));
 
         // set toggleFA, surgeInput, swayInput, heaveInput, rollInput, pitchInput, and yawInput
-        if (rb.angularVelocity.magnitude > manageableSpeed)
+        if (Vector3.Angle(steeringVector, selfTransform.forward) < handsOffAngle)
         {
             toggleFA = true;
             surgeInput = 0.0f;
@@ -62,8 +61,8 @@ public class EnemyChaser : MonoBehaviour
             swayInput  = 0.0f;
             heaveInput = 0.0f;
             rollInput = 0.0f; 
-            pitchInput = -targetManeuver[1]; 
-            yawInput = targetManeuver[0];
+            pitchInput = Mathf.Clamp(-steeringVector[1] * maneuverAgressiveness, -1, 1); 
+            yawInput = Mathf.Clamp(steeringVector[0] * maneuverAgressiveness, -1, 1);
         }
 
         // manage throttle
@@ -77,13 +76,12 @@ public class EnemyChaser : MonoBehaviour
         }
 
 
-        wantToShoot = (Vector3.Angle(selfToPlayer, laser.GetMuzzleDirection()) < 5) ? true : false;
+        wantToShoot = (Vector3.Angle(steeringVector, laser.GetMuzzleDirection()) < angleToShoot) ? true : false;
         if (wantToShoot)
         {
-            // Debug.Log("selfTo Player: " + selfToPlayer + " | muzzle: " + laser.GetMuzzleDirection() + " | angle: " + Vector3.Angle(selfToPlayer, laser.GetMuzzleDirection()));
             laser.Shoot();
-            //wantToShoot = true; // useless, except i think the compiler hates empty if's and i want to keep this if empty for now.
         }
+
     }
     
     void FixedUpdate()

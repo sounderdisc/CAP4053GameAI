@@ -153,7 +153,33 @@ public class FlightControl : MonoBehaviour
             rb.AddForce(-rb.velocity * rubberBandStrength);
         }
 
-        // Debug.Log(rb.angularVelocity);
+        // MAX ROTATION LIMIT
+        // if too high then set to the max. x pitch, y yaw, z roll
+        Vector3 clampedAngularVel = new Vector3(0.0f, 0.0f, 0.0f);
+        if (rb.angularVelocity.x > pitchMod)
+            clampedAngularVel.x = pitchMod;
+        else if (rb.angularVelocity.x < -1 * pitchMod)
+            clampedAngularVel.x = -1 * pitchMod;
+        else 
+            clampedAngularVel.x = rb.angularVelocity.x;
+
+        if (rb.angularVelocity.y > yawMod)
+            clampedAngularVel.y = yawMod;
+        else if (rb.angularVelocity.y < -1 * yawMod)
+            clampedAngularVel.y = -1 * yawMod;
+        else 
+            clampedAngularVel.y = rb.angularVelocity.y;
+
+        if (rb.angularVelocity.z > rollMod)
+            clampedAngularVel.z = rollMod;
+        else if (rb.angularVelocity.z < -1 * rollMod)
+            clampedAngularVel.z = -1 * rollMod;
+        else 
+            clampedAngularVel.z = rb.angularVelocity.z;
+
+        rb.angularVelocity = clampedAngularVel; 
+
+        Debug.Log(rb.angularVelocity);
     }
 
     public float getDesiredSpeed()

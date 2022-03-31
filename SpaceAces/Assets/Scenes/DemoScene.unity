@@ -902,10 +902,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerShipTransform: {fileID: 1885997553}
   selfTransform: {fileID: 1637665575}
-  selfToPlayer: {x: 0, y: 0, z: 0}
+  steeringVector: {x: 0, y: 0, z: 0}
   targetManeuver: {x: 0, y: 0, z: 0}
   wantToShoot: 0
-  maneuverAgressiveness: 2
+  angleToShoot: 4
+  handsOffAngle: 15
+  maneuverAgressiveness: 20
   baseThrust: 3
   baseRotation: 5
   flightAssistStrength: 2
@@ -917,6 +919,13 @@ MonoBehaviour:
   surgeMod: 1
   swayMod: 1
   heaveMod: 1
+  surgeInput: 0
+  swayInput: 0
+  heaveInput: 0
+  rollInput: 0
+  pitchInput: 0
+  yawInput: 0
+  toggleFA: 0
 --- !u!4 &1637665575 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6391839290496714497, guid: 90d5c4eeecf7d3c41977a39408c2fe00, type: 3}
