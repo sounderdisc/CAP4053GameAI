@@ -36,6 +36,7 @@ public class Laser : MonoBehaviour
             LastShootTime = Time.time;
             if (Physics.Raycast(LaserSpawnPoint.position, direction, out RaycastHit Hit, float.MaxValue, Mask))
             {
+                Debug.Log("HIT");
                 TrailRenderer trail = Instantiate(LaserTrail, LaserSpawnPoint.position, Quaternion.identity);
                 StartCoroutine(SpawnTrail(trail, Hit.point));
                 LaserSound.Play();
@@ -48,9 +49,8 @@ public class Laser : MonoBehaviour
             }
             else
             {
-                // spawnedTrans.position =   playerTrans.position + ( playerTrans.forward * someDistanceFloat );
+                Debug.Log("MISS");
                 Vector3 miss = LaserSpawnPoint.position + (LaserSpawnPoint.forward * 100); // https://answers.unity.com/questions/897678/vector-relative-to-object-coordinates.html
-                // miss[2] = 100f;
                 TrailRenderer trail = Instantiate(LaserTrail, LaserSpawnPoint.position, Quaternion.identity);
                 StartCoroutine(SpawnTrail(trail, miss));
                 LaserSound.Play();

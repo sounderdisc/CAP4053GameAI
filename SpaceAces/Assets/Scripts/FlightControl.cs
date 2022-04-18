@@ -179,7 +179,7 @@ public class FlightControl : MonoBehaviour
 
         rb.angularVelocity = clampedAngularVel; 
 
-        Debug.Log(rb.angularVelocity);
+        //Debug.Log(rb.angularVelocity);
     }
 
     public float getDesiredSpeed()
