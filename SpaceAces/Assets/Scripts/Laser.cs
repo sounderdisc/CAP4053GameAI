@@ -50,7 +50,7 @@ public class Laser : MonoBehaviour
             else
             {
                 Debug.Log("MISS");
-                Vector3 miss = LaserSpawnPoint.position + (LaserSpawnPoint.forward * 100); // https://answers.unity.com/questions/897678/vector-relative-to-object-coordinates.html
+                Vector3 miss = LaserSpawnPoint.position + (LaserSpawnPoint.forward * 1000); // https://answers.unity.com/questions/897678/vector-relative-to-object-coordinates.html
                 TrailRenderer trail = Instantiate(LaserTrail, LaserSpawnPoint.position, Quaternion.identity);
                 StartCoroutine(SpawnTrail(trail, miss));
                 LaserSound.Play();

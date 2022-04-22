@@ -6,13 +6,13 @@ using UnityEngine;
 public class EnemyChaser : MonoBehaviour
 {
     // location of the player's ship. for now, set in editor
-    [SerializeField] private Transform playerShipTransform;
+    [SerializeField] private Transform targetShipTransform;
     [SerializeField] private Transform selfTransform;
+    [SerializeField] private Vector3 selfToTarget;
     [SerializeField] private Vector3 steeringVector;
-    [SerializeField] private Vector3 targetManeuver;
     [SerializeField] private bool wantToShoot;
     [SerializeField] private float angleToShoot;
-    [SerializeField] private float handsOffAngle;
+    [SerializeField] private float targetLostAngle;
     [SerializeField] private float maneuverAgressiveness;
     private Rigidbody rb;
     private FlightControl flightController;
@@ -41,42 +41,62 @@ public class EnemyChaser : MonoBehaviour
 
     void DecideControllerState()
     {
-        steeringVector = Vector3.Normalize((playerShipTransform.position - selfTransform.position));
+        // https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Vector_subtraction.png/640px-Vector_subtraction.png
+        selfToTarget = Vector3.Normalize((targetShipTransform.position - selfTransform.position));
+        // we need to compare our forward vector to the vector pointing to the target to get the steering vector
+        steeringVector = Vector3.Normalize(selfToTarget - selfTransform.forward);
 
         // set toggleFA, surgeInput, swayInput, heaveInput, rollInput, pitchInput, and yawInput
-        if (Vector3.Angle(steeringVector, selfTransform.forward) < handsOffAngle)
+        // if (steeringVector.z < 0) // the target is behind you
+        if (false) // jank way to comment out one part of an if statement. very unclean code, but it works
         {
             toggleFA = true;
             surgeInput = 0.0f;
             swayInput  = 0.0f;
             heaveInput = 0.0f;
             rollInput = 0.0f; 
-            pitchInput = 0.0f; 
-            yawInput = 0.0f;
+            pitchInput = 1.0f; 
+            yawInput = Mathf.Clamp(steeringVector.y * maneuverAgressiveness, -1, 1);;
         }
-        else
+        else // the target is in front of you
         {
             toggleFA = true;
             surgeInput = 0.0f;
             swayInput  = 0.0f;
             heaveInput = 0.0f;
             rollInput = 0.0f; 
-            pitchInput = Mathf.Clamp(-steeringVector[1] * maneuverAgressiveness, -1, 1); 
-            yawInput = Mathf.Clamp(steeringVector[0] * maneuverAgressiveness, -1, 1);
+            pitchInput = Mathf.Clamp(steeringVector.x * maneuverAgressiveness, -1, 1); 
+            yawInput = Mathf.Clamp(steeringVector.y * maneuverAgressiveness, -1, 1);
         }
 
         // manage throttle
-        if (flightController.getDesiredSpeed() < idealSpeed)
+        // stop if you arent facing the target. move forward if you are
+        if (Vector3.Angle(selfToTarget, selfTransform.forward) > targetLostAngle)
         {
-            surgeInput = 1.0f;
+            if (flightController.getCurrentSpeed() > 0)
+            {
+                surgeInput = 1.0f;
+            }
+            else
+            {
+                surgeInput = -1.0f;
+            }
         }
         else
         {
-            surgeInput = -1.0f;
+            if (flightController.getDesiredSpeed() < idealSpeed)
+            {
+                surgeInput = 1.0f;
+            }
+            else
+            {
+                surgeInput = -1.0f;
+            }
+
+            // surgeInput = 1.0f;
         }
 
-
-        wantToShoot = (Vector3.Angle(steeringVector, laser.GetMuzzleDirection()) < angleToShoot) ? true : false;
+        wantToShoot = (Vector3.Angle(selfToTarget, laser.GetMuzzleDirection()) < angleToShoot) ? true : false;
         if (wantToShoot)
         {
             laser.Shoot();

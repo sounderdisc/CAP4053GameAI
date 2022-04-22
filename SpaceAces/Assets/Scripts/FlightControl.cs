@@ -186,4 +186,9 @@ public class FlightControl : MonoBehaviour
     {
         return desiredSpeed;
     }
+
+    public float getCurrentSpeed()
+    {
+        return rb.velocity.magnitude;
+    }
 }
