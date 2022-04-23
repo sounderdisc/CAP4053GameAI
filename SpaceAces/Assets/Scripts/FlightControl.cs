@@ -55,7 +55,8 @@ public class FlightControl : MonoBehaviour
             if (!isActiveFA)
             {
                 isActiveFA = true;
-                desiredSpeed = Math.Min(rb.velocity.z, maxSpeed);
+                // desiredSpeed = Math.Min(rb.velocity.z, maxSpeed);
+                desiredSpeed = 0.0f;
             }
             else
             {
