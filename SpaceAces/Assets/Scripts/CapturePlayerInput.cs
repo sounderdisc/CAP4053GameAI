@@ -56,6 +56,9 @@ public class CapturePlayerInput : MonoBehaviour
 
         // laser weapon
         controls.Weapons.Fire1.started += ctx => laser.Shoot();
+
+        // pause menu test
+        controls.Menues.pause.started += ctx => Debug.Log("input detected");
     }
 
     void OnEnable()

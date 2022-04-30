@@ -638,6 +638,56 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Menues"",
+            ""id"": ""72850bcd-6335-4ce9-ba1f-3f96b8dcc0ab"",
+            ""actions"": [
+                {
+                    ""name"": ""pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""13f67bef-57a9-4d80-b911-178c74d5c2f1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""bf612e71-69a6-4b8a-8ce9-eb82a6b45e3f"",
+                    ""path"": ""<Keyboard>/b"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""50193ba2-4068-46ea-9cd1-482e4d42240b"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""90432ff0-8562-429a-9544-abc06d91c440"",
+                    ""path"": ""<Keyboard>/equals"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -654,6 +704,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         // Weapons
         m_Weapons = asset.FindActionMap("Weapons", throwIfNotFound: true);
         m_Weapons_Fire1 = m_Weapons.FindAction("Fire1", throwIfNotFound: true);
+        // Menues
+        m_Menues = asset.FindActionMap("Menues", throwIfNotFound: true);
+        m_Menues_pause = m_Menues.FindAction("pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -823,6 +876,39 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         }
     }
     public WeaponsActions @Weapons => new WeaponsActions(this);
+
+    // Menues
+    private readonly InputActionMap m_Menues;
+    private IMenuesActions m_MenuesActionsCallbackInterface;
+    private readonly InputAction m_Menues_pause;
+    public struct MenuesActions
+    {
+        private @PlayerControls m_Wrapper;
+        public MenuesActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @pause => m_Wrapper.m_Menues_pause;
+        public InputActionMap Get() { return m_Wrapper.m_Menues; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(MenuesActions set) { return set.Get(); }
+        public void SetCallbacks(IMenuesActions instance)
+        {
+            if (m_Wrapper.m_MenuesActionsCallbackInterface != null)
+            {
+                @pause.started -= m_Wrapper.m_MenuesActionsCallbackInterface.OnPause;
+                @pause.performed -= m_Wrapper.m_MenuesActionsCallbackInterface.OnPause;
+                @pause.canceled -= m_Wrapper.m_MenuesActionsCallbackInterface.OnPause;
+            }
+            m_Wrapper.m_MenuesActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @pause.started += instance.OnPause;
+                @pause.performed += instance.OnPause;
+                @pause.canceled += instance.OnPause;
+            }
+        }
+    }
+    public MenuesActions @Menues => new MenuesActions(this);
     public interface IShipMovementActions
     {
         void OnSurgeAxis(InputAction.CallbackContext context);
@@ -836,5 +922,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     public interface IWeaponsActions
     {
         void OnFire1(InputAction.CallbackContext context);
+    }
+    public interface IMenuesActions
+    {
+        void OnPause(InputAction.CallbackContext context);
     }
 }

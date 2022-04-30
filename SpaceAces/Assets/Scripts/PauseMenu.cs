@@ -5,30 +5,34 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
+    [SerializeField] PlayerControls controls;
     public static bool GameIsPaused = false;
 
     public GameObject pauseMenuUI;
 
-    // Update is called once per frame
-    void Update()
+    void Awake()
     {
-        
-        if(Input.GetKeyDown(KeyCode.Escape))
-        {
-            if(GameIsPaused)
-            {
-                Resume();
-            }else
-            {
-                Pause();
-            }  
-        }
-        
-        
+        controls = new PlayerControls();
+        controls.Menues.pause.started += ctx => Debug.Log("input detected");
     }
 
+    public void wraper()
+    {
+        Debug.Log("in wrapper");
+        if (GameIsPaused)
+        {
+            Debug.Log("in first if");
+            Resume();
+        }
+        else
+        {
+            Debug.Log("in second if");
+            Pause();
+        }
+    }
     public void Resume()
     {
+        Debug.Log("in Resume()");
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
@@ -36,6 +40,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Pause()
     {
+        Debug.Log("in pause");
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
