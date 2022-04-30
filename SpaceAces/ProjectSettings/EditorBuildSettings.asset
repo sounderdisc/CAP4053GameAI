@@ -11,4 +11,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MothershipScene.unity
     guid: 5d98ced2c65ba4bf19a96133db084f89
+  - enabled: 1
+    path: Assets/Scenes/DemoScene.unity
+    guid: 196d1f8ba7168dd4f8d1ba5218f8847d
+  - enabled: 1
+    path: Assets/Scenes/Level1.unity
+    guid: 703e62d56981dc14ca073c89b53dac3c
+  - enabled: 1
+    path: Assets/Scenes/Level2.unity
+    guid: 491af26f45e79a7469aff68eee65f6f7
+  - enabled: 1
+    path: Assets/Scenes/Level3.unity
+    guid: 81b5ce919701e3e4db7b529167553102
   m_configObjects: {}
