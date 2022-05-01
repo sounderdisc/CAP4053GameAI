@@ -520,6 +520,22 @@ MonoBehaviour:
   secondsDelayBeforeEnteringScene: 8
   hyperSpaceSpeed: 100
   slowSpeed: 0.1
+--- !u!114 &291716727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 291716724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdb54de182909024c829f3ae820bcbae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  maxHealth: 100
+  healthRing: {fileID: 0}
+  isPlayer: 0
 --- !u!1 &370052483
 GameObject:
   m_ObjectHideFlags: 0
@@ -1259,8 +1275,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa94db3f837e6a44eb7fcbff938fffa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseThrust: 10
-  baseRotation: 5
+  baseThrust: 5
+  baseRotation: 2.5
   flightAssistStrength: 1.5
   maxSpeed: 50
   idealSpeed: 35
@@ -1303,9 +1319,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdb54de182909024c829f3ae820bcbae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
-  maxHealth: 100
+  health: 150
+  maxHealth: 150
   healthRing: {fileID: 1583102863}
+  isPlayer: 0
 --- !u!114 &860649135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2271,7 +2288,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7389552300880553964, guid: 90d5c4eeecf7d3c41977a39408c2fe00, type: 3}
       propertyPath: m_Name
-      value: EnemyChaser
+      value: EnemyCheater
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90d5c4eeecf7d3c41977a39408c2fe00, type: 3}
@@ -2303,8 +2320,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LaserSpawnPoint: {fileID: 1962139283}
-  LaserTrail: {fileID: 0}
-  ShootDelay: 0.5
+  LaserTrail: {fileID: 1365146672}
+  ShootDelay: 1.5
   Mask:
     serializedVersion: 2
     m_Bits: 1
@@ -2326,6 +2343,7 @@ MonoBehaviour:
   health: 10
   maxHealth: 100
   healthRing: {fileID: 0}
+  isPlayer: 0
 --- !u!114 &1962139287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2335,38 +2353,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1962139282}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bff11a758b92b454797487d50424722b, type: 3}
+  m_Script: {fileID: 11500000, guid: 1aa609c00a275f546b1b617ca3ce1b28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetShipTransform: {fileID: 0}
+  targetShipTransform: {fileID: 860649131}
   selfTransform: {fileID: 1962139284}
   selfToTarget: {x: 0, y: 0, z: 0}
   steeringVector: {x: 0, y: 0, z: 0}
   wantToShoot: 0
-  ignoreDamping: 1
-  haltDebug: 0
   angleToShoot: 3
-  targetLostAngle: 45
-  maneuverAgressiveness: 1
-  inputDamping: 0
-  baseThrust: 5
-  baseRotation: 100
-  flightAssistStrength: 1
-  maxSpeed: 25
-  idealSpeed: 15
-  rollMod: 1
-  pitchMod: 1
-  yawMod: 1
-  surgeMod: 1
-  swayMod: 1
-  heaveMod: 1
-  surgeInput: 0
-  swayInput: 0
-  heaveInput: 0
-  rollInput: 0
-  pitchInput: 0
-  yawInput: 0
-  toggleFA: 0
+  maneuverAgressiveness: 3
 --- !u!82 &1962139288
 AudioSource:
   m_ObjectHideFlags: 0

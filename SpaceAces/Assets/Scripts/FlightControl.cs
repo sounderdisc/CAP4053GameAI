@@ -81,11 +81,12 @@ public class FlightControl : MonoBehaviour
         // TRANSLATIONAL AXES
         rb.AddRelativeForce(Vector3.right * swayMod * swayInput * baseThrust * idealSpeedBonus);
         rb.AddRelativeForce(Vector3.up * heaveMod * heaveInput * baseThrust * idealSpeedBonus);
+        rb.AddRelativeForce(Vector3.forward * surgeMod * surgeInput * baseThrust * idealSpeedBonus); // SEE COMMENTED OUT FA CODE
         
         // ROTATIONAL AXES
-        rb.AddRelativeTorque(Vector3.back * rollMod * rollInput * baseRotation * idealSpeedBonus);
-        rb.AddRelativeTorque(Vector3.left * pitchMod * pitchInput * baseRotation * idealSpeedBonus);
-        rb.AddRelativeTorque(Vector3.up * yawMod * yawInput * baseRotation * idealSpeedBonus);
+        rb.AddRelativeTorque(Vector3.back * rollMod * rollInput * baseRotation * idealSpeedBonus, ForceMode.Acceleration);
+        rb.AddRelativeTorque(Vector3.left * pitchMod * pitchInput * baseRotation * idealSpeedBonus, ForceMode.Acceleration);
+        rb.AddRelativeTorque(Vector3.up * yawMod * yawInput * baseRotation * idealSpeedBonus, ForceMode.Acceleration);
 
         // FLIGHT ASSIST
         if (isActiveFA)
@@ -94,15 +95,15 @@ public class FlightControl : MonoBehaviour
             Vector3 currentAngularVelocity = rb.angularVelocity; 
             if ((Math.Abs(rollInput) < FLOAT_ZERO_TOLERANCE) && (Math.Abs(currentAngularVelocity.z) > FLOAT_ZERO_TOLERANCE))
             {
-                rb.AddTorque(new Vector3(0, 0, currentAngularVelocity.z) * rollMod * baseRotation * -flightAssistStrength);
+                rb.AddTorque(new Vector3(0, 0, currentAngularVelocity.z) * rollMod * baseRotation * -flightAssistStrength, ForceMode.Acceleration);
             }
             if ((Math.Abs(pitchInput) < FLOAT_ZERO_TOLERANCE) && (Math.Abs(currentAngularVelocity.x) > FLOAT_ZERO_TOLERANCE))
             {
-                rb.AddTorque(new Vector3(currentAngularVelocity.x, 0, 0) * pitchMod * baseRotation * -flightAssistStrength);
+                rb.AddTorque(new Vector3(currentAngularVelocity.x, 0, 0) * pitchMod * baseRotation * -flightAssistStrength, ForceMode.Acceleration);
             }
             if ((Math.Abs(yawInput) < FLOAT_ZERO_TOLERANCE) && (Math.Abs(currentAngularVelocity.y) > FLOAT_ZERO_TOLERANCE))
             {
-                rb.AddTorque(new Vector3(0, currentAngularVelocity.y, 0) * yawMod * baseRotation * -flightAssistStrength);
+                rb.AddTorque(new Vector3(0, currentAngularVelocity.y, 0) * yawMod * baseRotation * -flightAssistStrength, ForceMode.Acceleration);
             }
             
             // arrest the straifing and bobbing
@@ -115,32 +116,37 @@ public class FlightControl : MonoBehaviour
             {
                 rb.AddForce(new Vector3(currentVelocity.x, 0, 0) * swayMod * baseThrust * -flightAssistStrength);
             }
+            // SEE COMMENTED OUT FA CODE
+            if ((Math.Abs(surgeInput) < FLOAT_ZERO_TOLERANCE) && (Math.Abs(currentVelocity.z) > FLOAT_ZERO_TOLERANCE))
+            {
+                rb.AddForce(new Vector3(0, 0, currentVelocity.z) * swayMod * baseThrust * -flightAssistStrength);
+            }
 
             // forward and backwards, the z axis, is done differently when flight assist is on vs off.
             // first move the throttle according to the pilot's desires
-            desiredSpeed += surgeInput / THROTLE_MOVE_SPEED;
-            if (desiredSpeed > maxSpeed)
-            {
-                desiredSpeed = maxSpeed;
-            }
-            else if (desiredSpeed < -maxSpeed)
-            {
-                desiredSpeed = -maxSpeed;
-            }
-            // now, if the ship isnt going at the speed that the pilot wants, then apply force
-            if (Math.Abs(desiredSpeed - currentVelocity.z) > FLOAT_ZERO_TOLERANCE)
-            {
-                float throttleDirection = (desiredSpeed-currentVelocity.z > 0) ? 1 : -1;
-                rb.AddRelativeForce(Vector3.forward * surgeMod * throttleDirection * baseThrust * idealSpeedBonus);
-            }
+            // desiredSpeed += surgeInput / THROTLE_MOVE_SPEED;
+            // if (desiredSpeed > maxSpeed)
+            // {
+            //     desiredSpeed = maxSpeed;
+            // }
+            // else if (desiredSpeed < -maxSpeed)
+            // {
+            //     desiredSpeed = -maxSpeed;
+            // }
+            // // now, if the ship isnt going at the speed that the pilot wants, then apply force
+            // if (Math.Abs(desiredSpeed - currentVelocity.z) > FLOAT_ZERO_TOLERANCE)
+            // {
+            //     float throttleDirection = (desiredSpeed-currentVelocity.z > 0) ? 1 : -1;
+            //     rb.AddRelativeForce(Vector3.forward * surgeMod * throttleDirection * baseThrust * idealSpeedBonus);
+            // }
 
             // Debug.Log("FA ON: " + rb.velocity + " idealSpeedBonus: " + idealSpeedBonus);
         }
-        else
-        {
-            rb.AddRelativeForce(Vector3.forward * surgeMod * surgeInput * baseThrust * idealSpeedBonus);
-            // Debug.Log("FA OFF: " + rb.velocity + " idealSpeedBonus: " + idealSpeedBonus);
-        }
+        // else
+        // {
+        //     rb.AddRelativeForce(Vector3.forward * surgeMod * surgeInput * baseThrust * idealSpeedBonus);
+        //     // Debug.Log("FA OFF: " + rb.velocity + " idealSpeedBonus: " + idealSpeedBonus);
+        // }
 
         // IDEAL SPEED MANUVERABLITY BONUS
         // max 2 min 0.8 log of the difference between current speed and idea speed
@@ -156,29 +162,29 @@ public class FlightControl : MonoBehaviour
 
         // MAX ROTATION LIMIT
         // if too high then set to the max. x pitch, y yaw, z roll
-        Vector3 clampedAngularVel = new Vector3(0.0f, 0.0f, 0.0f);
-        if (rb.angularVelocity.x > pitchMod)
-            clampedAngularVel.x = pitchMod;
-        else if (rb.angularVelocity.x < -1 * pitchMod)
-            clampedAngularVel.x = -1 * pitchMod;
-        else 
-            clampedAngularVel.x = rb.angularVelocity.x;
+        // Vector3 clampedAngularVel = new Vector3(0.0f, 0.0f, 0.0f);
+        // if (rb.angularVelocity.x > pitchMod)
+        //     clampedAngularVel.x = pitchMod;
+        // else if (rb.angularVelocity.x < -1 * pitchMod)
+        //     clampedAngularVel.x = -1 * pitchMod;
+        // else 
+        //     clampedAngularVel.x = rb.angularVelocity.x;
 
-        if (rb.angularVelocity.y > yawMod)
-            clampedAngularVel.y = yawMod;
-        else if (rb.angularVelocity.y < -1 * yawMod)
-            clampedAngularVel.y = -1 * yawMod;
-        else 
-            clampedAngularVel.y = rb.angularVelocity.y;
+        // if (rb.angularVelocity.y > yawMod)
+        //     clampedAngularVel.y = yawMod;
+        // else if (rb.angularVelocity.y < -1 * yawMod)
+        //     clampedAngularVel.y = -1 * yawMod;
+        // else 
+        //     clampedAngularVel.y = rb.angularVelocity.y;
 
-        if (rb.angularVelocity.z > rollMod)
-            clampedAngularVel.z = rollMod;
-        else if (rb.angularVelocity.z < -1 * rollMod)
-            clampedAngularVel.z = -1 * rollMod;
-        else 
-            clampedAngularVel.z = rb.angularVelocity.z;
+        // if (rb.angularVelocity.z > rollMod)
+        //     clampedAngularVel.z = rollMod;
+        // else if (rb.angularVelocity.z < -1 * rollMod)
+        //     clampedAngularVel.z = -1 * rollMod;
+        // else 
+        //     clampedAngularVel.z = rb.angularVelocity.z;
 
-        rb.angularVelocity = clampedAngularVel; 
+        // rb.angularVelocity = clampedAngularVel; 
 
         //Debug.Log(rb.angularVelocity);
     }

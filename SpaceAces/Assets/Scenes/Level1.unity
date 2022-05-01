@@ -1681,7 +1681,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LaserSpawnPoint: {fileID: 554730528}
   LaserTrail: {fileID: 742243503}
-  ShootDelay: 0.5
+  ShootDelay: 1.5
   Mask:
     serializedVersion: 2
     m_Bits: 1
@@ -1703,6 +1703,7 @@ MonoBehaviour:
   health: 10
   maxHealth: 100
   healthRing: {fileID: 0}
+  isPlayer: 0
 --- !u!114 &1637665574
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1712,7 +1713,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1637665571}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bff11a758b92b454797487d50424722b, type: 3}
+  m_Script: {fileID: 11500000, guid: 1aa609c00a275f546b1b617ca3ce1b28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   targetShipTransform: {fileID: 1885997553}
@@ -1720,30 +1721,8 @@ MonoBehaviour:
   selfToTarget: {x: 0, y: 0, z: 0}
   steeringVector: {x: 0, y: 0, z: 0}
   wantToShoot: 0
-  ignoreDamping: 1
-  haltDebug: 0
   angleToShoot: 3
-  targetLostAngle: 45
-  maneuverAgressiveness: 1
-  inputDamping: 0
-  baseThrust: 5
-  baseRotation: 100
-  flightAssistStrength: 1
-  maxSpeed: 25
-  idealSpeed: 15
-  rollMod: 1
-  pitchMod: 1
-  yawMod: 1
-  surgeMod: 1
-  swayMod: 1
-  heaveMod: 1
-  surgeInput: 0
-  swayInput: 0
-  heaveInput: 0
-  rollInput: 0
-  pitchInput: 0
-  yawInput: 0
-  toggleFA: 0
+  maneuverAgressiveness: 3
 --- !u!4 &1637665575 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6391839290496714497, guid: 90d5c4eeecf7d3c41977a39408c2fe00, type: 3}
@@ -2037,8 +2016,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa94db3f837e6a44eb7fcbff938fffa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseThrust: 10
-  baseRotation: 5
+  baseThrust: 5
+  baseRotation: 2.5
   flightAssistStrength: 1.5
   maxSpeed: 50
   idealSpeed: 35
@@ -2196,6 +2175,7 @@ MonoBehaviour:
   health: 100
   maxHealth: 100
   healthRing: {fileID: 1251501168}
+  isPlayer: 0
 --- !u!114 &1885997560
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2329,11 +2309,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6391839290496714497, guid: 90d5c4eeecf7d3c41977a39408c2fe00, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 19.3
+      value: 26.5
       objectReference: {fileID: 0}
     - target: {fileID: 6391839290496714497, guid: 90d5c4eeecf7d3c41977a39408c2fe00, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.8
+      value: 10.5
       objectReference: {fileID: 0}
     - target: {fileID: 6391839290496714497, guid: 90d5c4eeecf7d3c41977a39408c2fe00, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2369,7 +2349,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7389552300880553964, guid: 90d5c4eeecf7d3c41977a39408c2fe00, type: 3}
       propertyPath: m_Name
-      value: EnemyChaser
+      value: EnemyCheater
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90d5c4eeecf7d3c41977a39408c2fe00, type: 3}
