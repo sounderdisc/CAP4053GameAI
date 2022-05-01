@@ -83,9 +83,9 @@ public class FlightControl : MonoBehaviour
         rb.AddRelativeForce(Vector3.up * heaveMod * heaveInput * baseThrust * idealSpeedBonus);
         
         // ROTATIONAL AXES
-        rb.AddRelativeTorque(Vector3.back * rollMod * rollInput * baseRotation * idealSpeedBonus);
-        rb.AddRelativeTorque(Vector3.left * pitchMod * pitchInput * baseRotation * idealSpeedBonus);
-        rb.AddRelativeTorque(Vector3.up * yawMod * yawInput * baseRotation * idealSpeedBonus);
+        rb.AddRelativeTorque(Vector3.back * rollMod * rollInput * baseRotation * idealSpeedBonus, ForceMode.Acceleration);
+        rb.AddRelativeTorque(Vector3.left * pitchMod * pitchInput * baseRotation * idealSpeedBonus, ForceMode.Acceleration);
+        rb.AddRelativeTorque(Vector3.up * yawMod * yawInput * baseRotation * idealSpeedBonus, ForceMode.Acceleration);
 
         // FLIGHT ASSIST
         if (isActiveFA)
@@ -94,15 +94,15 @@ public class FlightControl : MonoBehaviour
             Vector3 currentAngularVelocity = rb.angularVelocity; 
             if ((Math.Abs(rollInput) < FLOAT_ZERO_TOLERANCE) && (Math.Abs(currentAngularVelocity.z) > FLOAT_ZERO_TOLERANCE))
             {
-                rb.AddTorque(new Vector3(0, 0, currentAngularVelocity.z) * rollMod * baseRotation * -flightAssistStrength);
+                rb.AddTorque(new Vector3(0, 0, currentAngularVelocity.z) * rollMod * baseRotation * -flightAssistStrength, ForceMode.Acceleration);
             }
             if ((Math.Abs(pitchInput) < FLOAT_ZERO_TOLERANCE) && (Math.Abs(currentAngularVelocity.x) > FLOAT_ZERO_TOLERANCE))
             {
-                rb.AddTorque(new Vector3(currentAngularVelocity.x, 0, 0) * pitchMod * baseRotation * -flightAssistStrength);
+                rb.AddTorque(new Vector3(currentAngularVelocity.x, 0, 0) * pitchMod * baseRotation * -flightAssistStrength, ForceMode.Acceleration);
             }
             if ((Math.Abs(yawInput) < FLOAT_ZERO_TOLERANCE) && (Math.Abs(currentAngularVelocity.y) > FLOAT_ZERO_TOLERANCE))
             {
-                rb.AddTorque(new Vector3(0, currentAngularVelocity.y, 0) * yawMod * baseRotation * -flightAssistStrength);
+                rb.AddTorque(new Vector3(0, currentAngularVelocity.y, 0) * yawMod * baseRotation * -flightAssistStrength, ForceMode.Acceleration);
             }
             
             // arrest the straifing and bobbing
