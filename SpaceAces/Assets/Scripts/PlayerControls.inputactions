@@ -138,6 +138,39 @@
                 },
                 {
                     "name": "1D Axis",
+                    "id": "882036cd-b862-4f82-adce-9520df59d331",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SurgeAxis",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "65b1cdd4-ae60-433e-876c-dbe4a92e7a70",
+                    "path": "<HID::Thrustmaster T.16000M>/button4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SurgeAxis",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "f53e4bd9-f020-4590-9354-39d37ec6306e",
+                    "path": "<HID::Thrustmaster T.16000M>/button3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SurgeAxis",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "1D Axis",
                     "id": "48ced733-a462-44af-8a9f-648e9b12277d",
                     "path": "1DAxis",
                     "interactions": "",
@@ -162,6 +195,39 @@
                     "name": "positive",
                     "id": "1af4008a-a3e3-4fff-9eff-43f161f6dab1",
                     "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwayAxis",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "af4451cf-b61b-45a3-93c4-0de0211d272c",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwayAxis",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "85155673-2ae8-4dba-9815-6f06196ffc5c",
+                    "path": "<HID::Thrustmaster T.16000M>/hat/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwayAxis",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "5bdfce7a-467b-4aef-bd1e-3222ff5d6f4f",
+                    "path": "<HID::Thrustmaster T.16000M>/hat/right",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -237,6 +303,39 @@
                 },
                 {
                     "name": "1D Axis",
+                    "id": "3979215c-c278-4ab8-bfbb-0ba3411e5da3",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "HeaveAxis",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "ef8a0e78-20f1-4858-8158-cc0b71f6c8b0",
+                    "path": "<HID::Thrustmaster T.16000M>/hat/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "HeaveAxis",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "0e68eb4d-effa-42e2-a7ed-ed0985c46b82",
+                    "path": "<HID::Thrustmaster T.16000M>/hat/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "HeaveAxis",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "1D Axis",
                     "id": "5d4c740c-d9a7-4303-86d5-b87b60c007d3",
                     "path": "1DAxis",
                     "interactions": "",
@@ -303,7 +402,7 @@
                 },
                 {
                     "name": "1D Axis",
-                    "id": "5f620a04-35d2-4ef3-bb4d-450f6fd7f8cf",
+                    "id": "8c847c40-8662-4d8c-8587-3f2852bc294a",
                     "path": "1DAxis",
                     "interactions": "",
                     "processors": "",
@@ -314,8 +413,8 @@
                 },
                 {
                     "name": "negative",
-                    "id": "346bf446-fb34-46db-9486-17b98bfcbd4d",
-                    "path": "<Joystick>/stick/left",
+                    "id": "8123dc73-0b85-4518-ad55-9cc9e1f8d756",
+                    "path": "<HID::Thrustmaster T.16000M>/stick/left",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -325,8 +424,8 @@
                 },
                 {
                     "name": "positive",
-                    "id": "54502cec-15d4-4403-bc82-f960570e07cc",
-                    "path": "<Joystick>/stick/right",
+                    "id": "2b5ac998-4c0f-445a-af32-3d8ee4a0878d",
+                    "path": "<HID::Thrustmaster T.16000M>/stick/right",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -402,7 +501,7 @@
                 },
                 {
                     "name": "1D Axis",
-                    "id": "a77f703d-33d1-40ef-bdf3-677950dd9727",
+                    "id": "642f2172-8d36-4767-8d50-ad678b8f484a",
                     "path": "1DAxis",
                     "interactions": "",
                     "processors": "",
@@ -413,8 +512,8 @@
                 },
                 {
                     "name": "negative",
-                    "id": "5cf56598-ab87-4933-938d-7b4f9eaf6097",
-                    "path": "<Joystick>/stick/up",
+                    "id": "4f44e85b-72b9-489e-8dde-4f9b1ed206b6",
+                    "path": "<HID::Thrustmaster T.16000M>/stick/up",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -424,8 +523,8 @@
                 },
                 {
                     "name": "positive",
-                    "id": "c6658460-1d30-4586-b55b-c8d6adb4423c",
-                    "path": "<Joystick>/stick/down",
+                    "id": "3d7e6ca0-a147-4b70-bf65-f61c3920e447",
+                    "path": "<HID::Thrustmaster T.16000M>/stick/down",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -500,37 +599,15 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "1D Axis",
-                    "id": "cbef4953-2a95-4ba4-9d6f-43eddac17133",
-                    "path": "1DAxis",
+                    "name": "",
+                    "id": "7564d1d2-7ee4-4f67-821a-540487c6b80d",
+                    "path": "<HID::Thrustmaster T.16000M>/rz",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "YawAxis",
-                    "isComposite": true,
+                    "isComposite": false,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "negative",
-                    "id": "1c6d0fea-b2c9-4cf2-876f-4827d768173e",
-                    "path": "<Joystick>/stick/x",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "YawAxis",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "positive",
-                    "id": "197f1e13-db67-4ff6-83f1-d67a31f42839",
-                    "path": "<Joystick>/stick/y",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "YawAxis",
-                    "isComposite": false,
-                    "isPartOfComposite": true
                 },
                 {
                     "name": "",
@@ -553,6 +630,17 @@
                     "action": "ToggleFA",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5411c55c-5ad7-4759-8343-fe8dc16acd5d",
+                    "path": "<HID::Thrustmaster T.16000M>/button2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ToggleFA",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -564,6 +652,15 @@
                     "name": "Fire1",
                     "type": "Button",
                     "id": "fa6e1a8f-b83c-4839-8163-10759518a2db",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SkipLevel",
+                    "type": "Button",
+                    "id": "f82c452a-2bb4-42d3-a7a3-e84af256e335",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -612,6 +709,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Fire1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0d58cff8-0a0a-43de-b978-d0a71ee019db",
+                    "path": "<HID::Thrustmaster T.16000M>/trigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fire1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6ae502df-5808-476f-9a7b-5ad64cc0cd1b",
+                    "path": "<Keyboard>/backslash",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SkipLevel",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

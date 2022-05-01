@@ -20,6 +20,8 @@ public class EnemyCheater : MonoBehaviour
     private int ticksToHoldRandomManuver = 1000; // 1000/50=20 seconds
     private int tickCount = 0;
     private bool hasShotThisCycle;
+    [SerializeField] private bool waiting = false;
+    [SerializeField] private float secondsDelayBeforeStoppingWaiting = 8f;
     private Rigidbody rb;
     private Laser laser;
     
@@ -32,6 +34,13 @@ public class EnemyCheater : MonoBehaviour
         hasShotThisCycle = false;
         tickCount = 0;
         randomManuver = 0;
+        if (waiting)
+            Invoke("StopWaiting", secondsDelayBeforeStoppingWaiting);
+    }
+
+    void StopWaiting()
+    {
+        waiting = false;
     }
 
     void EvaluateTargetLocation()
@@ -120,6 +129,8 @@ public class EnemyCheater : MonoBehaviour
     // 50 calls per second
     void FixedUpdate()
     {
+        if (waiting || targetShipTransform == null)
+            return;
         EvaluateTargetLocation();
         ManuverShip();
         FireControl();

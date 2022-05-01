@@ -9,6 +9,7 @@ public class Target : MonoBehaviour
     public float maxHealth = 100f;
     public Image healthRing;
     public bool isPlayer;
+    public bool isEnemy;
     
     void Start()
     {

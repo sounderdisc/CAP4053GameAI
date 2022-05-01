@@ -6,7 +6,8 @@ using UnityEngine;
 public class FlightControl : MonoBehaviour
 {
     private float FLOAT_ZERO_TOLERANCE = 0.0001f;
-    private float THROTLE_MOVE_SPEED = 25; // modifer to make the throttle move slower so a pilot can adjust speed accurately with FA on.
+    // SEE COMMENTED OUT FA CODE
+    // private float THROTLE_MOVE_SPEED = 25; // modifer to make the throttle move slower so a pilot can adjust speed accurately with FA on.
     private float baseThrust;
     private float baseRotation;
     private float flightAssistStrength;
@@ -119,7 +120,7 @@ public class FlightControl : MonoBehaviour
             // SEE COMMENTED OUT FA CODE
             if ((Math.Abs(surgeInput) < FLOAT_ZERO_TOLERANCE) && (Math.Abs(currentVelocity.z) > FLOAT_ZERO_TOLERANCE))
             {
-                rb.AddForce(new Vector3(0, 0, currentVelocity.z) * swayMod * baseThrust * -flightAssistStrength);
+                rb.AddForce(new Vector3(0, 0, currentVelocity.z) * swayMod * baseThrust * -flightAssistStrength * 0.2f);
             }
 
             // forward and backwards, the z axis, is done differently when flight assist is on vs off.
